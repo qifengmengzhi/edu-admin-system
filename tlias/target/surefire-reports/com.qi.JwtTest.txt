@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.qi.JwtTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.276 s <<< FAILURE! -- in com.qi.JwtTest
+com.qi.JwtTest.testParseJwt -- Time elapsed: 0.024 s <<< ERROR!
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2025-12-17T16:23:05Z. Current time: 2026-05-29T16:21:50Z, a difference of 14083125959 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:385)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541)
+	at com.qi.JwtTest.testParseJwt(JwtTest.java:29)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

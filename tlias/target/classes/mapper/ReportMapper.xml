@@ -1,0 +1,48 @@
+<!--定义Mapper映射文件的约束和基本结构-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qi.mapper.ReportMapper">
+    <select id="getEmpJobData" resultType="java.util.Map">
+        select (case job
+                    when 1 then '班主任'
+                    when 2 then '讲师'
+                    when 3 then '学工主管'
+                    when 4 then '教研主管'
+                    when 5 then '咨询师'
+                    else '其他' end) pos,
+               count(*)              num
+        from emp
+        group by pos
+        order by num;
+    </select>
+    <select id="getEmpSexData" resultType="java.util.Map">
+        select if(gender = 1, '男', '女') as name,
+               count(*)                   as value
+        from emp
+        group by gender;
+    </select>
+    <!--    班级学生数量统计-->
+    <select id="getStudentCountData" resultType="java.util.Map">
+        select c.name className, count(*) num
+        from clazz c
+                 left join student s on c.id = s.clazz_id
+        group by c.name
+        order by num;
+    </select>
+    <!--    学生学历统计-->
+    <select id="getStudentDegreeData" resultType="java.util.Map">
+        select case degree
+                   when 1 then '初中'
+                   when 2 then '高中'
+                   when 3 then '大专'
+                   when 4 then '本科'
+                   when 5 then '硕士'
+                   when 6 then '博士'
+                   else '其他'end
+                        name,
+               count(*) value
+        from student
+        group by degree
+    </select>
+</mapper>
