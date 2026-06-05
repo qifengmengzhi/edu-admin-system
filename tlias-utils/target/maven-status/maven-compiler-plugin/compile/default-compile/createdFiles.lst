@@ -1,5 +1,5 @@
-com\qi\utils\AliyunOSSProperties.class
 com\qi\utils\JwtUtils.class
+com\qi\utils\AliyunOSSProperties.class
 com\qi\Main.class
 com\qi\utils\AliyunOSSOperator.class
 com\qi\utils\CurrentHolder.class

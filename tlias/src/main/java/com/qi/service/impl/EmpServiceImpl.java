@@ -58,6 +58,7 @@ public class EmpServiceImpl implements EmpService {
             }
 
             //添加工作经历
+            if(emp.getExprList()!=null&&emp.getExprList().size()>0)
             empExprMapper.insert(emp.getExprList());
         } finally {
             //记录操作日志

@@ -19,6 +19,12 @@ public class TokenFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         //1.获取请求路径
         String requestURI = request.getRequestURI();
+        if (requestURI.contains("/swagger-ui")
+                || requestURI.contains("/v3/api-docs")) {
+            log.info("swagger文档访问请求,放行");
+            filterChain.doFilter(request, response);
+            return;
+        }
         //2.判断请求路径是否是登录路径 如果是登录路径，则放行
         if (requestURI.contains("/login")) {
             log.info("登录请求,放行");

@@ -6,11 +6,11 @@ com\qi\pojo\JobOption.class
 com\qi\pojo\ClazzDate.class
 com\qi\pojo\PageResult.class
 com\qi\pojo\LoginInfo.class
-com\qi\pojo\Emp.class
 com\qi\pojo\Dept.class
+com\qi\pojo\Emp.class
 com\qi\pojo\Result.class
 com\qi\pojo\EmpQueryParam.class
-com\qi\pojo\OperateLog.class
-com\qi\pojo\EmpLog.class
 com\qi\pojo\Student.class
+com\qi\pojo\EmpLog.class
+com\qi\pojo\OperateLog.class
 com\qi\pojo\Clazz.class
