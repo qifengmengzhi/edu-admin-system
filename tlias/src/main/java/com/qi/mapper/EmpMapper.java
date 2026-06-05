@@ -25,5 +25,5 @@ public interface EmpMapper {
     void update(Emp emp);
 
     //登录
-    LoginInfo login(Emp emp);
+    LoginInfo login(LoginDTO loginDTO);
 }

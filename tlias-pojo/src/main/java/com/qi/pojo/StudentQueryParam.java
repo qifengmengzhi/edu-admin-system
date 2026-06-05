@@ -1,6 +1,8 @@
 package com.qi.pojo;
 
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 /**
@@ -32,5 +34,7 @@ public class StudentQueryParam {
      * 分页查询的每页记录数
      * 如果未指定，默认为10
      */
+    @Min(value = 1, message = "每页条数最小为1")
+    @Max(value = 100, message = "每页条数最大为100")
     private Integer pageSize = 10;
 }

@@ -5,8 +5,10 @@ import com.qi.pojo.Clazz;
 import com.qi.pojo.ClazzQueryParam;
 import com.qi.pojo.Result;
 import com.qi.service.ClazzService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -23,14 +25,14 @@ public class ClazzController {
     }
     //条件分页查询班级列表
     @GetMapping
-    public Result page(ClazzQueryParam  param){
+    public Result page(@Validated ClazzQueryParam  param){
        log.info("查询班级： {}", param);
         return Result.success(clazzService.page( param));
     }
     //添加班级
     @PostMapping
     @Log
-    public Result insert(@RequestBody Clazz clazz){
+    public Result insert(@Valid @RequestBody Clazz clazz){
         log.info("添加班级{}", clazz);
         clazzService.insert(clazz);
         return Result.success();
@@ -44,7 +46,7 @@ public class ClazzController {
     //修改班级
     @PutMapping
     @Log
-    public Result update(@RequestBody Clazz clazz){
+    public Result update(@Valid @RequestBody Clazz clazz){
         log.info("修改班级{}", clazz);
         clazzService.update(clazz);
         return Result.success();

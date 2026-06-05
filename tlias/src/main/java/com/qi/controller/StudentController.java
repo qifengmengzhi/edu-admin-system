@@ -5,8 +5,10 @@ import com.qi.pojo.Result;
 import com.qi.pojo.Student;
 import com.qi.pojo.StudentQueryParam;
 import com.qi.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +22,7 @@ public class StudentController {
 
     //条件分页查询
     @GetMapping
-    public Result page(StudentQueryParam param) {
+    public Result page(@Validated StudentQueryParam param) {
         log.info("查询参数： {}", param);
         return Result.success(studentService.page(param));
     }
@@ -28,7 +30,7 @@ public class StudentController {
     //添加学生
     @PostMapping
     @Log
-    public Result save(@RequestBody Student student) {
+    public Result save(@Valid @RequestBody Student student) {
         log.info("添加学生{}", student);
         studentService.save(student);
         return Result.success();
@@ -44,7 +46,7 @@ public class StudentController {
     //修改学生
     @PutMapping
     @Log
-    public Result update(@RequestBody Student student) {
+    public Result update(@Valid @RequestBody Student student) {
         log.info("修改学生{}", student);
         studentService.update(student);
         return Result.success();

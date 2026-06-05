@@ -117,8 +117,8 @@ public class EmpServiceImpl implements EmpService {
 
     //员工登录
     @Override
-    public LoginInfo login(Emp emp) {
-        LoginInfo loginInfo = empMapper.login(emp);
+    public LoginInfo login(LoginDTO loginDTO) {
+        LoginInfo loginInfo = empMapper.login(loginDTO);
         if(loginInfo != null){
           loginInfo.setToken(JwtUtils.generateJwt(
                   Map.of("username", loginInfo.getUsername(),

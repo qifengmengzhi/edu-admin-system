@@ -28,6 +28,12 @@
                 <artifactId>jjwt</artifactId>
                 <version>0.9.1</version>
             </dependency>
+            <!--            参数校验 validation-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>3.2.10</version>  <!-- 版本号跟Spring Boot一致 -->
+            </dependency>
         </dependencies>
 
 

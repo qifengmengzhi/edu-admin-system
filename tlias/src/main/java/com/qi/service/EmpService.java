@@ -18,5 +18,5 @@ public interface EmpService {
 
     List<Emp> findAll();
 
-    LoginInfo login(Emp emp);
+    LoginInfo login(LoginDTO loginDTO);
 }

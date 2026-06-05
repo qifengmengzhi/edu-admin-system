@@ -6,9 +6,11 @@ import com.qi.pojo.EmpExpr;
 import com.qi.pojo.EmpQueryParam;
 import com.qi.pojo.Result;
 import com.qi.service.EmpService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -24,7 +26,7 @@ public class EmpController {
 
     //分页条件查询
     @GetMapping
-    public Result page(EmpQueryParam param) {
+    public Result page(@Validated EmpQueryParam param) {
         log.info("查询请求参数： {}", param);
         return Result.success(empService.page(param));
     }
@@ -37,7 +39,7 @@ public class EmpController {
     //添加员工
     @PostMapping
     @Log
-    public Result insert(@RequestBody Emp emp) throws Exception {
+    public Result insert(@Valid @RequestBody Emp emp) throws Exception {
         log.info("添加员工{}", emp);
 
         empService.insert(emp);
@@ -62,7 +64,7 @@ public class EmpController {
     //修改员工
     @PutMapping
     @Log
-    public Result update(@RequestBody Emp emp){
+    public Result update(@Valid @RequestBody Emp emp){
         log.info("修改员工{}", emp);
         empService.update(emp);
         return Result.success();
