@@ -157,4 +157,9 @@ public class EmpServiceImpl implements EmpService {
 
     }
 
+    @Override
+    public List<EmpExportVO> getExportList() {
+        return empMapper.getExportList();
+    }
+
 }

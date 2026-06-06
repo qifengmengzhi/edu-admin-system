@@ -25,4 +25,6 @@ public interface EmpMapper {
     LoginInfo login(LoginDTO loginDTO);
 
     void updatePassword(Integer empId, String newPassword);
+
+    List<EmpExportVO> getExportList();
 }

@@ -92,9 +92,15 @@
         from emp
         where username = #{username}
     </select>
+    <!--    导出员工基本信息-->
+    <select id="getExportList" resultType="com.qi.pojo.EmpExportVO">
+       select e.*,d.name deptName from emp e,dept d where e.dept_id=d.id ;
+    </select>
     <!--    修改密码-->
     <update id="updatePassword">
-        update emp set password=#{newPassword} where id=#{empId}
+        update emp
+        set password=#{newPassword}
+        where id = #{empId}
     </update>
 
 </mapper>

@@ -1,11 +1,10 @@
 package com.qi.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.qi.anno.Log;
-import com.qi.pojo.Emp;
-import com.qi.pojo.EmpExpr;
-import com.qi.pojo.EmpQueryParam;
-import com.qi.pojo.Result;
+import com.qi.pojo.*;
 import com.qi.service.EmpService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -15,8 +14,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Slf4j
@@ -84,6 +86,25 @@ public class EmpController {
       empService.updatePassword(oldPassword,newPassword);
 
      return Result.success();
+    }
+    //导出员工信息
+    @GetMapping("/export")
+    public void export(HttpServletResponse response) throws IOException {
+        // 1. 查询数据
+        List<EmpExportVO> list = empService.getExportList();
+
+        // 2. 设置响应头
+          //告诉浏览器：返回的是一个 Excel 文件，不是普通网页。
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setCharacterEncoding("utf-8");
+         //URLEncoder.encode() 把中文转成 %E5%91%98%E5%B7%A5... 格式，避免浏览器下载时文件名乱码
+        String fileName = URLEncoder.encode("员工信息_" + LocalDate.now(), "UTF-8");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+
+        // 3. 导出,写出 Excel 数据
+        EasyExcel.write(response.getOutputStream(), EmpExportVO.class)
+                .sheet("员工列表")
+                .doWrite(list);
     }
 
 }

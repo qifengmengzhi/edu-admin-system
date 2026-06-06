@@ -23,4 +23,6 @@ public interface EmpService {
     LoginInfo login(LoginDTO loginDTO);
 
     void updatePassword(@NotBlank(message = "旧密码不能为空") String oldPassword, @NotBlank(message = "新密码不能为空") @Size(min = 6,max = 16,message = "新密码长度6~16位") String newPassword);
+
+    List<EmpExportVO> getExportList();
 }
