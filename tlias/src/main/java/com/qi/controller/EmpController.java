@@ -7,6 +7,8 @@ import com.qi.pojo.EmpQueryParam;
 import com.qi.pojo.Result;
 import com.qi.service.EmpService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -69,6 +71,19 @@ public class EmpController {
         empService.update(emp);
         return Result.success();
 
+    }
+    //修改员工密码
+    @PostMapping("updatePassword")
+    public Result updatePassword(
+            @NotBlank(message = "旧密码不能为空")
+            @RequestParam String oldPassword,
+            @NotBlank(message = "新密码不能为空")
+            @Size(min = 6,max = 16,message = "新密码长度6~16位")
+            @RequestParam String newPassword){
+        log.info("修改密码");
+      empService.updatePassword(oldPassword,newPassword);
+
+     return Result.success();
     }
 
 }

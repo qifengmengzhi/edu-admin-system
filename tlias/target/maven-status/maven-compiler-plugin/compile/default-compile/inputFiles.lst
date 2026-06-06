@@ -6,6 +6,7 @@ F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\Tli
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\EmpService.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\mapper\EmpMapper.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\mapper\StudentMapper.java
+F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\impl\LogServiceImpl.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\exception\GlobleExceptionHandler.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\controller\UploadController.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\controller\SessionController.java
@@ -25,15 +26,18 @@ F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\map
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\impl\DeptServiceImpl.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\filter\DemoFilter.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\mapper\DeptMapper.java
+F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\mapper\LogMapper.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\impl\ClazzServiceImpl.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\controller\ReportController.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\impl\EmpLogServiceImpl.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\impl\ReportServiceImpl.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\ClazzService.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\exception\DeleteException.java
+F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\controller\LogController.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\StudentService.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\filter\TokenFilter.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\controller\ClazzController.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\ReportService.java
+F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\service\LogService.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\mapper\EmpExprMapper.java
 F:\beifen\javaweb\webAICode\tlias\web-ai-project2\tlias\src\main\java\com\qi\config\WebConfig.java

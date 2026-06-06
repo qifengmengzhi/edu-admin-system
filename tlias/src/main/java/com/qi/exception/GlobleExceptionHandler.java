@@ -37,4 +37,14 @@ public class GlobleExceptionHandler {
         log.error("参数校验失败：{}", message);
         return Result.error(message);
     }
+    @ExceptionHandler
+    public Result handle(LoginException e){
+        log.error("登录异常: {}", e.getMessage());
+        return Result.error(e.getMessage());
+    }
+    @ExceptionHandler
+    public Result handle(UpdatePwException e){
+        log.error("修改密码异常：: {}", e.getMessage());
+        return Result.error(e.getMessage());
+    }
 }

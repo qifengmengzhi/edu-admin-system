@@ -21,11 +21,7 @@ public class LoginController {
     public Result login(@Valid @RequestBody LoginDTO loginDTO) {
         log.info("员工登录:{}", loginDTO);
         LoginInfo loginInfo= empService.login(loginDTO);
-        if(loginInfo != null){
             log.info("登录成功:{}", loginInfo);
             return Result.success(loginInfo);
-        }
-
-        return Result.error("用户名或密码错误");
     }
 }

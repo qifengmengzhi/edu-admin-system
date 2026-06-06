@@ -3,10 +3,7 @@ package com.qi.mapper;
 import com.qi.pojo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -26,4 +23,6 @@ public interface EmpMapper {
 
     //登录
     LoginInfo login(LoginDTO loginDTO);
+
+    void updatePassword(Integer empId, String newPassword);
 }

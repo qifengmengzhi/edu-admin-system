@@ -2,11 +2,14 @@ package com.qi.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.qi.exception.UpdatePwException;
 import com.qi.mapper.EmpExprMapper;
 import com.qi.mapper.EmpMapper;
 import com.qi.pojo.*;
 import com.qi.service.EmpLogService;
 import com.qi.service.EmpService;
+import com.qi.utils.BCryptUtil;
+import com.qi.utils.CurrentHolder;
 import com.qi.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.util.CollectionUtils;
 
+import com.qi.exception.LoginException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +48,8 @@ public class EmpServiceImpl implements EmpService {
     public void insert(Emp emp) throws Exception {
 
         try {
+            //默认密码加密
+            emp.setPassword(BCryptUtil.encrypt("123456"));
             //设置创建时间，修改时间
             emp.setCreateTime(LocalDateTime.now());
             emp.setUpdateTime(LocalDateTime.now());
@@ -119,13 +125,36 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public LoginInfo login(LoginDTO loginDTO) {
         LoginInfo loginInfo = empMapper.login(loginDTO);
-        if(loginInfo != null){
+        if(loginInfo==null|| !BCryptUtil.matches(loginDTO.getPassword(), loginInfo.getPassword())) {
+                throw new LoginException("用户名或密码错误");
+        }
+        else {
           loginInfo.setToken(JwtUtils.generateJwt(
                   Map.of("username", loginInfo.getUsername(),
                           "id", loginInfo.getId())));
 
         }
         return loginInfo;
+    }
+
+    @Override
+    public void updatePassword(String oldPassword, String newPassword) {
+        //验证新旧密码是否一致
+        if(oldPassword.equals(newPassword)){
+            throw new UpdatePwException("新密码不能与旧密码相同");
+        }else {
+            //验证旧密码是否正确
+            Integer empId = CurrentHolder.getCurrentId();
+            Emp info = empMapper.getInfo(empId);
+            if(!BCryptUtil.matches(oldPassword, info.getPassword())){
+                throw new UpdatePwException("旧密码错误");
+            }else
+            {
+                //修改密码，加密
+                empMapper.updatePassword(empId,BCryptUtil.encrypt(newPassword));
+            }
+        }
+
     }
 
 }

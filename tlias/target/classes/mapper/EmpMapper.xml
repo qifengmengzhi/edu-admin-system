@@ -5,9 +5,9 @@
 <mapper namespace="com.qi.mapper.EmpMapper">
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time,
-                        update_time)
+                        update_time, password)
         values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId},
-                #{createTime}, #{updateTime})
+                #{createTime}, #{updateTime}, #{password})
     </insert>
     <select id="findAll" resultType="com.qi.pojo.Emp">
         select e.*, d.name deptName from emp as e left join dept as d on e.dept_id = d.id
@@ -34,6 +34,7 @@
     <resultMap id="empResultMap" type="com.qi.pojo.Emp">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
+        <result property="password" column="password"/>
         <result property="name" column="name"/>
         <result property="gender" column="gender"/>
         <result property="phone" column="phone"/>
@@ -84,9 +85,16 @@
         </set>
         where id = #{id}
     </update>
+
     <!--    员工登录-->
     <select id="login" resultType="com.qi.pojo.LoginInfo">
-        select * from emp where username = #{username} and password = #{password}
+        select *
+        from emp
+        where username = #{username}
     </select>
+    <!--    修改密码-->
+    <update id="updatePassword">
+        update emp set password=#{newPassword} where id=#{empId}
+    </update>
 
 </mapper>

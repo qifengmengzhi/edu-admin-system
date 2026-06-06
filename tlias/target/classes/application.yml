@@ -4,7 +4,7 @@ spring:
   #mysql连接配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tlias
+    url: jdbc:mysql://localhost:3306/edu_manage
     username: root
     password: 527134
   servlet:
