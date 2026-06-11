@@ -14,11 +14,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
--- 1. 创建数据库（如果不存在）
-CREATE DATABASE IF NOT EXISTS `edu_manage` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- 2. 切换到该数据库
-USE `edu_manage`;
 --
 -- Table structure for table `clazz`
 --
